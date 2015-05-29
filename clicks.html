@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Mousemove</title>
+</head>
+
+<body>
+	<h1 id="heading">Hello world!</h1>
+
+    <script src="https://code.jquery.com/jquery-2.1.0.js"></script>
+
+	<script>
+    var leftOffset = 0;
+    var topOffset = 0;
+    var direction = 0;
+    var id;
+    var speed = 1;
+
+    var moveHeading = function () {
+        $("#heading").offset({ 
+            left: leftOffset,
+            top: topOffset
+         });
+
+        if(direction === 0) {
+        if(topOffset < 200) {
+            topOffset+=speed;
+        } else {
+            direction = 1;
+        }
+        return;
+        }
+
+        if(direction === 1) {
+        if(leftOffset < 200) {
+            leftOffset+=speed;
+        } else {
+            direction = 2;
+        }
+        return;
+        }
+
+        if(direction === 2) {
+        if(topOffset > 0) {
+            topOffset-=speed;
+        } else {
+            direction = 3;
+        }
+        return;
+        }
+
+        if(direction === 3) {
+        if(leftOffset > 0) {
+            leftOffset-=speed;
+        } else {
+            direction = 0;
+        }
+        return;
+        }
+    }; 
+
+    id = setInterval(moveHeading, 1);
+     
+    var clickHandler = function (event) {
+        speed++;
+        console.log("speed: "+speed);
+        if(speed === 11) {
+       clearInterval(id);
+       speed = 0;
+       alert("You win, dude.");
+    }
+    };
+
+    $("h1").click(clickHandler);
+    </script>
+</body>
+</html>

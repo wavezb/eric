@@ -66,10 +66,10 @@
         speed++;
         console.log("speed: "+speed);
         if(speed === 11) {
-       clearInterval(id);
-       speed = 0;
-       alert("You win, dude.");
-    }
+            clearInterval(id);
+            speed = 0;
+            alert("Congratulations! You win, dude.");
+        }
     };
 
     $("h1").click(clickHandler);

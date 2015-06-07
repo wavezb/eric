@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Cars</title>
+</head>
+
+
+<body>
+	<script src="https://code.jquery.com/jquery-2.1.0.js"></script>
+
+	<script>
+    var Dude = function (x, y) {
+      this.x = x;
+      this.y = y;
+    };
+
+    var drawCar = function (car) {
+      var carHtml = '<img src="http://vignette2.wikia.nocookie.net/deadliestfiction/images/f/f3/Steve.png/revision/latest?cb=20111112012735">';
+
+      var carElement = $(carHtml);
+
+      carElement.css({
+      	position: "absolute",
+      	left: car.x,
+      	top: car.y
+      });
+
+      $("body").append(carElement);
+    };
+    var tesla = new Dude(10, 130);
+    var nissan = new Dude(100, 200);
+    var anotherGuy = new Dude(160, 10)
+
+    drawCar(tesla);
+    drawCar(nissan);
+	</script>
+</body>
+</html>
